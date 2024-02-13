@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Receiver</title>
+  </head>
+  <body style="            background-color:Grey;">
+    <h1>Camp Dashboard🕋</h1>
+    <label style="position: relative; left:50px; top:1px;" for="languageSelect">Select
+      camp Language:</label>
+    <select style="position: relative; left:50px; top:1px;" id="languageSelect"
+
+      onchange="changeLanguage()">
+    </select>
+    <h1><img style="width: 400px; height: 250px; position:relative; top: -120px; left:400px;"
+
+        src="file:///C:/Users/Herclues/Desktop/try2%20-%20Copy/logowadeh.png" alt=""
+
+        title="logo"></h1>
+    <h1></h1>
+    <font size="+2">
+      <div style=" position: relative; left:100px; top:-100px;" id="translations"></div>
+      <script src="translator.js"></script> </font>
+    <script>
+        var selectedLanguage = 'en';  // Default language
+
+        function changeLanguage() {
+            selectedLanguage = document.getElementById("languageSelect").value;
+            localStorage.setItem('selectedLanguage', selectedLanguage);
+            updateMessage();
+        }
+
+        function updateMessage() {
+            var receivedMessage = localStorage.getItem("message");
+            if (receivedMessage) {
+                translateMessage(receivedMessage, selectedLanguage);
+            } else {
+                document.getElementById("translations").textContent = "No message received yet.";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Populate language dropdown
+            var languageSelect = document.getElementById("languageSelect");
+            var storedLanguage = localStorage.getItem('selectedLanguage');
+            selectedLanguage = storedLanguage || 'en';
+            
+            var languages = ['en', 'es', 'fr', 'de', 'it', 'ja', 'ko', 'ar','bn','zh','el','hi','id','ru','tr','cy'];
+            languages.forEach(language => {
+                var option = document.createElement('option');
+                option.value = language;
+                option.text = language.toUpperCase();
+                languageSelect.add(option);
+            });
+
+            languageSelect.value = selectedLanguage;  // Set the dropdown to the stored language
+
+            updateMessage();
+        });
+    </script>
+    
+  </body>
+</html>

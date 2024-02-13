@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>واضح Wadeh</title>
+    <link href="senderstyle.css" rel="stylesheet" type="text/css">
+  </head>
+  <body> <font size="+3"> <b><label style=" position:relative; left:100px; top:60px;"
+          for="message">ENTER THE ALERT:&nbsp;</label></b>&nbsp;&nbsp; <img style="width: 400px; height: 250px; position:relative; top: -70px; left:190px;"
+        src="file:///C:/Users/Herclues/Desktop/try2%20-%20Copy/logowadeh.png" alt=""
+        title="logo"> <b> <label style=" position:relative; left:-250px; top:-60px;"
+          for="message">ADMIN DASHBOARD 🛠️🚨</label></b> <input style="width:400px; height:150px; position:relative; left:500px; top:-50px;"
+        id="messageInput" type="text"> <button onclick="sendMessage()" style="width: 200px; height:30px ;position:relative; left:200px; top:60px;">SEND
+        </button> <script>
+        function sendMessage() {
+            var message = document.getElementById("messageInput").value;
+            localStorage.setItem("message", message);
+            alert("Message sent!");
+        }
+    </script> </font>
+  </body>
+</html>
